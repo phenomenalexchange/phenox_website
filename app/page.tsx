@@ -12,6 +12,7 @@ import {
   ICycle,
   IDatabaseUpload,
   IEthereum,
+  IFacebook,
   IFreelancers,
   IGetStarted,
   IGoogleplay,
@@ -48,8 +49,10 @@ export default function Home() {
   const [losersData, setLosersData] = useState<any[]>([]);
   const [marketStats, setMarketStats] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const [newsData, setNewsData] = useState<any[]>([]);
   const [newsLoading, setNewsLoading] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Helper function to format time ago
   const getTimeAgo = (timestamp: string): string => {
@@ -81,6 +84,19 @@ export default function Home() {
     sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -262,7 +278,7 @@ export default function Home() {
   return (
     <div className="font-sans bg-primary-white">
       {/* Navbar */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[94%] bg-secondary text-primary-black px-4 py-2 rounded-4xl ">
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[94%] bg-secondary text-primary-black px-4 py-2 rounded-4xl z-10 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="shrink-0">
@@ -280,19 +296,19 @@ export default function Home() {
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize ${
                       activeSection === id
                         ? "bg-accent-yellow text-primary-black"
                         : "text-primary-black hover:text-primary-white"
                     }`}
                   >
-                    {id.replace("-", " ").toUpperCase()}
+                    {id === "faq" ? "FAQ" : id.replaceAll("-", " ")}
                   </button>
                 ))}
               </div>
             </div>
             <div className="hidden lg:block">
-              <button className="bg-accent-yellow text-primary-black px-4 py-2 rounded-3xl font-medium hover:bg-yellow-400 transition-colors">
+              <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black px-4 py-2 rounded-3xl font-medium hover:bg-yellow-400 transition-colors">
                 Download Now
               </button>
             </div>
@@ -340,7 +356,7 @@ export default function Home() {
                   </button>
                 ),
               )}
-              <button className="block bg-accent-yellow text-primary-black px-3 py-2 rounded-3xl font-medium w-full text-left hover:bg-yellow-400">
+              <button onClick={() => setModalOpen(true)} className="block bg-accent-yellow text-primary-black px-3 py-2 rounded-3xl font-medium w-full text-left hover:bg-yellow-400">
                 Download Now
               </button>
             </div>
@@ -365,10 +381,10 @@ export default function Home() {
             digital assets, all in one powerful platform.
           </p>
           <div className="flex justify-center space-x-8">
-            <button className="bg-accent-yellow text-primary-black  lg:px-8 px-5 py-3 rounded-4xl font-bold md:text-sm text-xs hover:bg-yellow-400 transition-colors mb-12">
+            <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black  lg:px-8 px-5 py-3 rounded-4xl font-bold md:text-sm text-xs hover:bg-yellow-400 transition-colors mb-12">
               Start using PhenoX
             </button>
-            <button className="bg-[#FCFCFC] border border-[#CFCFD2] text-primary-black px-5 py-3 rounded-4xl font-bold md:text-sm text-xs transition-colors mb-12">
+            <button onClick={() => scrollToSection("how-it-works")} className="bg-[#FCFCFC] border border-[#CFCFD2] text-primary-black px-5 py-3 rounded-4xl font-bold md:text-sm text-xs transition-colors mb-12">
               See how it works
             </button>
           </div>
@@ -897,7 +913,7 @@ export default function Home() {
             Connect with crypto users worldwide. Send and receive payments
             instantly across borders without traditional banking limitations.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mt-14">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mt-14 z-0">
             <div className="bg-secondary  rounded-3xl relative">
               <div className="flex items-center justify-center ">
                 <Image
@@ -1061,10 +1077,10 @@ export default function Home() {
             today.
           </p>
           <div className="flex justify-center space-x-8 mt-14">
-            <div className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
+            <div onClick={() => setModalOpen(true)}  className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
               <Image src={IGoogleplay} alt="Google Play Store" />
             </div>
-            <div className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
+            <div onClick={() => setModalOpen(true)}  className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
               <Image src={IApplestore} alt="App Store" />
             </div>
           </div>
@@ -1289,8 +1305,10 @@ export default function Home() {
             <div>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://t.me/PhenomenalGiants"
                   className="text-gray-400-custom hover:text-primary-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
                     src={ITelegram}
@@ -1299,8 +1317,10 @@ export default function Home() {
                   />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/phenomenal_exchange"
                   className="text-gray-400-custom hover:text-primary-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                  <Image
                     src={IInstagram}
@@ -1309,18 +1329,22 @@ export default function Home() {
                   />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/PhenomenalExchange"
                   className="text-gray-400-custom hover:text-primary-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
-                    src={ILinkedin}
+                    src={IFacebook}
                     alt="LinkedIn"
                     className="w-8 h-8"
                   />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/phenox_01"
                   className="text-gray-400-custom hover:text-primary-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Image
                     src={ITwitter}
@@ -1336,6 +1360,49 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Coming Soon Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-lg max-w-md mx-4">
+            <h2 className="text-2xl font-bold mb-4 text-center">Coming Soon</h2>
+            <p className="text-gray-600 mb-6 text-center">
+              This feature is coming soon. Stay tuned for updates!
+            </p>
+            <div className="flex justify-center">
+              <button
+                onClick={() => setModalOpen(false)}
+                className="bg-accent-yellow text-primary-black px-6 py-2 rounded-4xl font-bold hover:bg-yellow-400 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 bg-accent-yellow text-primary-black p-3 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-40 flex items-center justify-center"
+          aria-label="Scroll to top"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 10l7-7m0 0l7 7m-7-7v18"
+            />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

@@ -34,7 +34,7 @@ import telegram from "../public/images/ic_round-telegram.svg";
 import instagram from "../public/images/mdi_instagram.svg";
 import linkedin from "../public/images/mdi_linkedin.svg";
 import twitter from "../public/images/prime_twitter.svg";
-
+import facebook from "../public/images/facebook-svgrepo-com.svg";
 
 
 
@@ -72,6 +72,7 @@ export const ITelegram: StaticImageData = telegram;
 export const IInstagram: StaticImageData = instagram;
 export const ILinkedin: StaticImageData = linkedin;
 export const ITwitter: StaticImageData = twitter;
+export const IFacebook: StaticImageData = facebook;
 
 
 
