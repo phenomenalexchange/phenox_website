@@ -1241,31 +1241,7 @@ export default function Home() {
                 </svg>
               </summary>
               <p className="mt-4 lg:text-lg text-sm text-[#A7A7BE]">
-                Yes. PhenoX uses encrypted transactions, blockchain
-                verification, and multi-layer security protocols to safeguard
-                user assets and activity.
-              </p>
-            </details>
-            <details className="bg-secondary p-6 rounded-3xl mb-2 group">
-              <summary className="font-semibold text-[#0B0B0F] cursor-pointer flex justify-between items-center list-none">
-                <span className="lg:text-lg text-xs ">Can I store my crypto with PhenoX?</span>
-                <svg
-                  className="w-5 h-5 transition-transform duration-200 border-2 rounded-full group-open:rotate-180"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </summary>
-              <p className="mt-4 lg:text-lg text-sm text-[#A7A7BE]">
-                Yes. PhenoX maintains transparent and competitive fee
-                structures, clearly displayed before transaction confirmation.
+                Yes. PhenoX maintains transparent and competitive fee structures, clearly displayed before transaction confirmation.
               </p>
             </details>
             <details className="bg-secondary p-6 rounded-3xl mb-2 group">
@@ -1385,7 +1361,7 @@ export default function Home() {
       {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-8 right-8 bg-accent-yellow text-primary-black p-3 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-40 flex items-center justify-center"
+          className="fixed bottom-8 cursor-pointer right-8 bg-accent-yellow text-primary-black p-3 rounded-full shadow-lg hover:bg-yellow-400 transition-all duration-300 z-40 flex items-center justify-center"
           aria-label="Scroll to top"
         >
           <svg

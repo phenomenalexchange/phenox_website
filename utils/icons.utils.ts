@@ -34,7 +34,7 @@ import telegram from "../public/images/ic_round-telegram.svg";
 import instagram from "../public/images/mdi_instagram.svg";
 import linkedin from "../public/images/mdi_linkedin.svg";
 import twitter from "../public/images/prime_twitter.svg";
-import facebook from "../public/images/facebook-svgrepo-com.svg";
+import facebook from "../public/images/ic_baseline-facebook.svg";
 
 
 
