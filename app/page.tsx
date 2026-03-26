@@ -278,7 +278,7 @@ export default function Home() {
   return (
     <div className="font-sans bg-primary-white">
       {/* Navbar */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[94%] bg-secondary text-primary-black px-4 py-2 rounded-4xl z-10 ">
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 w-[94%] backdrop-blur-sm bg-secondary text-primary-black px-4 py-2 rounded-4xl z-10 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="shrink-0">
@@ -291,6 +291,7 @@ export default function Home() {
                   "product",
                   "security",
                   "ecosystem",
+                  "about",
                   "faq",
                 ].map((id) => (
                   <button
@@ -1332,7 +1333,7 @@ export default function Home() {
             </div>
           </div>
           <div className=" mt-4 pt-8 text-center text-gray-400-custom">
-            <p>&copy; 2026 PhenoX. All rights reserved.</p>
+            <p>&copy; 2026 Phenomenal Giants Ltd. All rights reserved.</p>
           </div>
         </div>
       </footer>
