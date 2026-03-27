@@ -39,6 +39,8 @@ import {
 } from "@/utils/icons.utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import ImageCard from "@/components/aboutCard"; 
+import { aboutCards } from "@/utils/aboutData";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -341,19 +343,19 @@ export default function Home() {
         </div>
         {isMenuOpen && (
           <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900-custom">
-              {["how-it-works", "product", "security", "ecosystem", "faq"].map(
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 backdrop-blur-sm z-10 bg-gray-900-custom">
+              {["how-it-works", "product", "security", "ecosystem", "about", "faq"].map(
                 (id) => (
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left ${
+                    className={`block px-3 py-2 rounded-md capitalize text-base font-medium w-full text-left ${
                       activeSection === id
                         ? "bg-accent-yellow text-primary-black"
                         : "text-gray-300-custom hover:text-primary-white"
                     }`}
                   >
-                    {id.replace("-", " ").toUpperCase()}
+                    {id === "faq" ? "FAQ" : id.replaceAll("-", " ")}
                   </button>
                 ),
               )}
@@ -1066,8 +1068,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* about phenominal giants */}
+      <section
+        id="about"
+        className="scroll-mt-24 pb-20  text-primary-white fade-in"
+      >
+        <div className="max-w-7xl mx-auto px-4 text-center z-0">
+          <h2 className="text-2xl md:text-5xl font-semibold  text-primary-black mb-6">
+            Backed by Phenomenal Giants Ltd
+          </h2>
+          <p className="text-md md:text-3xl text-[#A7A7BE]  mb-8">
+            PhenoX is built and operated by Phenomenal Giants Ltd, a registered private limited liability company incorporated in Nigeria. As a company, we operate across digital solutions, value exchange services, and consumer-focused platforms, building products designed for trust, speed, and everyday utility.
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 z-0">
+            {aboutCards.map((card, index) => (
+              <ImageCard key={index} {...card} />
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       {/* Download Section */}
-      <section id="download" className="scroll-mt-24 fade-in">
+      <section id="download" className="scroll-mt-24 pt-10 fade-in">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-5xl font-semibold  text-primary-black mb-6">
             Switching is easier than you think

@@ -35,7 +35,9 @@ import instagram from "../public/images/mdi_instagram.svg";
 import linkedin from "../public/images/mdi_linkedin.svg";
 import twitter from "../public/images/prime_twitter.svg";
 import facebook from "../public/images/ic_baseline-facebook.svg";
-
+import missionBG from "../public/images/mission-bg.png";
+import deliveryBG from "../public/images/delivery-bg.png";
+import trustBG from "../public/images/trust-bg.png";
 
 
 export const ILogo: StaticImageData = logo;
@@ -73,6 +75,9 @@ export const IInstagram: StaticImageData = instagram;
 export const ILinkedin: StaticImageData = linkedin;
 export const ITwitter: StaticImageData = twitter;
 export const IFacebook: StaticImageData = facebook;
+export const IMissionBG: StaticImageData = missionBG;
+export const IDeliveryBG: StaticImageData = deliveryBG;
+export const ITrustBG: StaticImageData = trustBG;
 
 
 
