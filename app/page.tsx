@@ -299,7 +299,7 @@ export default function Home() {
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize ${
+                    className={`px-3 py-2 rounded-md text-sm font-medium cursor-pointer transition-colors capitalize ${
                       activeSection === id
                         ? "bg-accent-yellow text-primary-black"
                         : "text-primary-black hover:text-primary-white"
@@ -311,14 +311,14 @@ export default function Home() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black px-4 py-2 rounded-3xl font-medium hover:bg-yellow-400 transition-colors">
+              <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black px-4 py-2 rounded-3xl cursor-pointer font-medium hover:bg-yellow-400 transition-colors">
                 Download Now
               </button>
             </div>
             <div className="lg:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="bg-gray-800-custom inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-primary-white hover:bg-gray-700 focus:outline-none"
+                className="bg-gray-800-custom inline-flex items-center cursor-pointer justify-center p-2 rounded-md text-gray-400 hover:text-primary-white hover:bg-gray-700 focus:outline-none"
               >
                 <svg
                   className="h-6 w-6"
@@ -349,7 +349,7 @@ export default function Home() {
                   <button
                     key={id}
                     onClick={() => scrollToSection(id)}
-                    className={`block px-3 py-2 rounded-md capitalize text-base font-medium w-full text-left ${
+                    className={`block px-3 py-2 cursor-pointer rounded-md capitalize text-base font-medium w-full text-left ${
                       activeSection === id
                         ? "bg-accent-yellow text-primary-black"
                         : "text-gray-300-custom hover:text-primary-white"
@@ -359,7 +359,7 @@ export default function Home() {
                   </button>
                 ),
               )}
-              <button onClick={() => setModalOpen(true)} className="block bg-accent-yellow text-primary-black px-3 py-2 rounded-3xl font-medium w-full text-left hover:bg-yellow-400">
+              <button onClick={() => setModalOpen(true)} className="block bg-accent-yellow cursor-pointer text-primary-black px-3 py-2 rounded-3xl font-medium w-full text-left hover:bg-yellow-400">
                 Download Now
               </button>
             </div>
@@ -384,10 +384,10 @@ export default function Home() {
             digital assets, all in one powerful platform.
           </p>
           <div className="flex justify-center space-x-8">
-            <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black  lg:px-8 px-5 py-3 rounded-4xl font-bold md:text-sm text-xs hover:bg-yellow-400 transition-colors mb-12">
+            <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black cursor-pointer lg:px-8 px-5 py-3 rounded-4xl font-bold md:text-sm text-xs hover:bg-yellow-400 transition-colors mb-12">
               Start using PhenoX
             </button>
-            <button onClick={() => scrollToSection("how-it-works")} className="bg-[#FCFCFC] border border-[#CFCFD2] text-primary-black px-5 py-3 rounded-4xl font-bold md:text-sm text-xs transition-colors mb-12">
+            <button onClick={() => scrollToSection("how-it-works")} className="bg-[#FCFCFC] border cursor-pointer border-[#CFCFD2] text-primary-black px-5 py-3 rounded-4xl font-bold md:text-sm text-xs transition-colors mb-12">
               See how it works
             </button>
           </div>
@@ -440,7 +440,7 @@ export default function Home() {
               <button
                 key={tab}
                 onClick={() => setMarketTab(tab)}
-                className={`md:px-6 px-3 py-2 rounded-3xl text-xs md:text-xl font-semibold transition-colors ${
+                className={`md:px-6 px-3 py-2 rounded-3xl cursor-pointer text-xs md:text-xl font-semibold transition-colors ${
                   marketTab === tab
                     ? "bg-accent-yellow text-primary-black"
                     : "bg-secondary text-[#A7A7BE] hover:bg-gray-100"
@@ -1372,7 +1372,7 @@ export default function Home() {
             <div className="flex justify-center">
               <button
                 onClick={() => setModalOpen(false)}
-                className="bg-accent-yellow text-primary-black px-6 py-2 rounded-4xl font-bold hover:bg-yellow-400 transition-colors"
+                className="bg-accent-yellow text-primary-black cursor-pointer px-6 py-2 rounded-4xl font-bold hover:bg-yellow-400 transition-colors"
               >
                 Close
               </button>
