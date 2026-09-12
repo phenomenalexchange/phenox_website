@@ -38,6 +38,7 @@ import {
   IWoksCrypto,
 } from "@/utils/icons.utils";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import ImageCard from "@/components/aboutCard"; 
 import { aboutCards } from "@/utils/aboutData";
@@ -1356,7 +1357,15 @@ export default function Home() {
             </div>
           </div>
           <div className=" mt-4 pt-8 text-center text-gray-400-custom">
-            <p>&copy; 2026 Phenomenal Giants Ltd. All rights reserved.</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              <p>&copy; 2026 Phenomenal Giants Ltd. All rights reserved.</p>
+              <Link
+                href="/privacy-policy"
+                className="underline transition-colors hover:text-primary-white"
+              >
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

@@ -38,6 +38,10 @@ import facebook from "../public/images/ic_baseline-facebook.svg";
 import missionBG from "../public/images/mission-bg.png";
 import deliveryBG from "../public/images/delivery-bg.png";
 import trustBG from "../public/images/trust-bg.png";
+import PhenoXlogowhite from "../public/images/PhenoXlogowhite.jpg";
+
+
+
 
 
 export const ILogo: StaticImageData = logo;
@@ -78,6 +82,7 @@ export const IFacebook: StaticImageData = facebook;
 export const IMissionBG: StaticImageData = missionBG;
 export const IDeliveryBG: StaticImageData = deliveryBG;
 export const ITrustBG: StaticImageData = trustBG;
+export const IPhenoXlogowhite: StaticImageData = PhenoXlogowhite;
 
 
 
