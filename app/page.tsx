@@ -42,6 +42,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ImageCard from "@/components/aboutCard"; 
 import { aboutCards } from "@/utils/aboutData";
+import posthog from "posthog-js";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -274,8 +275,25 @@ export default function Home() {
   }, []);
 
   const scrollToSection = (id: string) => {
+    if (posthog.__loaded) {
+      posthog.capture("section_navigation_clicked", { section: id });
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
+  };
+
+  const openDownloadModal = (source: string) => {
+    if (posthog.__loaded) {
+      posthog.capture("download_interest_opened", { source });
+    }
+    setModalOpen(true);
+  };
+
+  const selectMarketTab = (tab: string) => {
+    if (posthog.__loaded) {
+      posthog.capture("market_tab_selected", { market_tab: tab });
+    }
+    setMarketTab(tab);
   };
 
   return (
@@ -312,7 +330,7 @@ export default function Home() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black px-4 py-2 rounded-3xl cursor-pointer font-medium hover:bg-yellow-400 transition-colors">
+              <button onClick={() => openDownloadModal("navigation")} className="bg-accent-yellow text-primary-black px-4 py-2 rounded-3xl cursor-pointer font-medium hover:bg-yellow-400 transition-colors">
                 Download Now
               </button>
             </div>
@@ -360,7 +378,7 @@ export default function Home() {
                   </button>
                 ),
               )}
-              <button onClick={() => setModalOpen(true)} className="block bg-accent-yellow cursor-pointer text-primary-black px-3 py-2 rounded-3xl font-medium w-full text-left hover:bg-yellow-400">
+              <button onClick={() => openDownloadModal("mobile_navigation")} className="block bg-accent-yellow cursor-pointer text-primary-black px-3 py-2 rounded-3xl font-medium w-full text-left hover:bg-yellow-400">
                 Download Now
               </button>
             </div>
@@ -385,7 +403,7 @@ export default function Home() {
             digital assets, all in one powerful platform.
           </p>
           <div className="flex justify-center space-x-8">
-            <button onClick={() => setModalOpen(true)} className="bg-accent-yellow text-primary-black cursor-pointer lg:px-8 px-5 py-3 rounded-4xl font-bold md:text-sm text-xs hover:bg-yellow-400 transition-colors mb-12">
+            <button onClick={() => openDownloadModal("hero")} className="bg-accent-yellow text-primary-black cursor-pointer lg:px-8 px-5 py-3 rounded-4xl font-bold md:text-sm text-xs hover:bg-yellow-400 transition-colors mb-12">
               Start using PhenoX
             </button>
             <button onClick={() => scrollToSection("how-it-works")} className="bg-[#FCFCFC] border cursor-pointer border-[#CFCFD2] text-primary-black px-5 py-3 rounded-4xl font-bold md:text-sm text-xs transition-colors mb-12">
@@ -440,7 +458,7 @@ export default function Home() {
             {["trending", "gainers", "losers"].map((tab) => (
               <button
                 key={tab}
-                onClick={() => setMarketTab(tab)}
+                onClick={() => selectMarketTab(tab)}
                 className={`md:px-6 px-3 py-2 rounded-3xl cursor-pointer text-xs md:text-xl font-semibold transition-colors ${
                   marketTab === tab
                     ? "bg-accent-yellow text-primary-black"
@@ -1102,10 +1120,10 @@ export default function Home() {
             today.
           </p>
           <div className="flex justify-center space-x-8 mt-14">
-            <div onClick={() => setModalOpen(true)}  className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
+            <div onClick={() => openDownloadModal("google_play")}  className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
               <Image src={IGoogleplay} alt="Google Play Store" />
             </div>
-            <div onClick={() => setModalOpen(true)}  className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
+            <div onClick={() => openDownloadModal("app_store")}  className="font-bold cursor-pointer hover:bg-gray-800-custom transition-colors">
               <Image src={IApplestore} alt="App Store" />
             </div>
           </div>
