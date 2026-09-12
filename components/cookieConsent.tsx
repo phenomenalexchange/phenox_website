@@ -48,14 +48,14 @@ export default function CookieConsent() {
           <button
             type="button"
             onClick={() => saveChoice("declined")}
-            className="rounded-full border border-gray-600 px-4 py-2 text-sm font-semibold text-gray-300-custom transition-colors hover:border-primary-white hover:text-primary-white"
+            className="rounded-full border border-gray-600 px-4 py-2 text-sm font-semibold text-gray-300-custom transition-colors hover:border-primary-white hover:text-primary-white cursor-pointer"
           >
             Decline
           </button>
           <button
             type="button"
             onClick={() => saveChoice("accepted")}
-            className="rounded-full bg-accent-yellow px-4 py-2 text-sm font-semibold text-primary-black transition-colors hover:bg-yellow-300"
+            className="rounded-full bg-accent-yellow px-4 py-2 text-sm font-semibold text-primary-black transition-colors hover:bg-yellow-300 cursor-pointer"
           >
             Accept
           </button>
